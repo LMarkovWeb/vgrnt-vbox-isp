@@ -1,27 +1,38 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "peru/ubuntu-20.04-desktop-amd64"
-  config.vm.network "private_network", ip: "192.168.20.10"
-  config.vm.hostname = "isp.example.com"
+  config.vm.box = "centos/7"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "ubuntu20-server-isp_manager"
     vb.gui = false
     vb.memory = "2048"
-    vb.cpus = 2
-   end
-  
-  config.vm.define "ispmanager" do |t|
+    vb.cpus = 1
   end
+  
+  # ispmanager
+  config.vm.define "ispmngr" do |ispmngr|
+    ispmngr.vm.hostname = 'isp.loc'
+    ispmngr.vm.network "private_network", ip: "192.168.20.10"
 
-  $script = <<-SCRIPT
-      echo 'Install ISP Manager...'
-      wget -P /tmp/ispmanager http://download.ispsystem.com/install.sh
-      sudo systemctl disable apparmor
-    SCRIPT
-  config.vm.provision "shell",
-    inline: $script
+    # $script = <<-SCRIPT
+    #     echo 'Install ISP Manager...'
+    #     wget -P /tmp/ispmanager http://download.ispsystem.com/install.sh
+    #   SCRIPT
+    # ispmngr.vm.provision "shell",
+    # inline: $script
+  end
+  # vmmanager
+  config.vm.define "vmmngr" do |vmmngr|
+    vmmngr.vm.hostname = 'vm.loc'
+    vmmngr.vm.network "private_network", ip: "192.168.20.11"
+  end
+  # billmanager
+  config.vm.define "billmngr" do |billmngr|
+    billmngr.vm.hostname = 'bill.loc'
+    billmngr.vm.network "private_network", ip: "192.168.20.12"
+  end
 end
