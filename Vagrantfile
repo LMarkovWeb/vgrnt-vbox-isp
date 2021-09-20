@@ -12,6 +12,12 @@ Vagrant.configure("2") do |config|
     vb.memory = "2048"
     vb.cpus = 1
   end
+
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
+  config.vm.provision "shell", inline: <<-SHELL
+    cat /home/vagrant/.ssh/me.pub >> /home/vagrant/.ssh/authorized_keys
+  SHELL
+  # @todo /etc/ssh/sshd_config PasswordAuthentication yes
   
   # ispmanager
   config.vm.define "ispmngr" do |ispmngr|
