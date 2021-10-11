@@ -11,6 +11,10 @@
 vagrant up
 ```
 
+Вход в панель root/root
+
+Активировать триальную лицензию.
+
 ## Документация
 
 ### Vagrantfile файл
@@ -23,7 +27,7 @@ vagrant up
 
 ### ISP Manager machine
 
-Установка триальной версии.
+Установка триальной версии. По окончании установки нужно получить ключ и активировать систему по ключу (ссылка #5).
 
 Дополнительно будут установлены:
 
@@ -51,7 +55,8 @@ vagrant up
 
 ## 🔗 Ссылки
 
-[ispsystem.ru](https://docs.ispsystem.ru/)  
-[Документация ISPmanager 6 Lite, Pro, Host](https://docs.ispsystem.ru/ispmanager6-lite)  
-[Информация о триальной версии](https://www.ispsystem.ru/support/knowledge-base/trials)  
-[Цены на лицензии ISPmanager 6, сравнительная таблица](https://www.isplicense.ru/services/ispsystem/ispmanager6/)
+#1. [ispsystem.ru](https://docs.ispsystem.ru/)  
+#2. [Документация ISPmanager 6 Lite, Pro, Host](https://docs.ispsystem.ru/ispmanager6-lite)  
+#3. [Информация о триальной версии](https://www.ispsystem.ru/support/knowledge-base/trials)  
+#4. [Цены на лицензии ISPmanager 6, сравнительная таблица](https://www.isplicense.ru/services/ispsystem/ispmanager6/)  
+#5. [Инструкция по активации лицензии по ключу](https://docs.ispsystem.ru/coremanager/litsenzii-ispsystem/aktivatsiya-litsenzii-po-klyuchu)
