@@ -26,11 +26,12 @@ Vagrant.configure("2") do |config|
     ispmngr.vm.network "forwarded_port", id: "ispmngr", guest: 1500, host: 8888, guest_ip: "10.0.2.15", host_ip: "127.0.0.1", protocol: "tcp"
   end
 
-  # # vmmanager
-  # config.vm.define "vmmngr" do |vmmngr|
-  #   vmmngr.vm.hostname = 'vm.loc'
-  #   vmmngr.vm.network "private_network", ip: "192.168.20.11"
-  # end
+  # vmmanager
+  config.vm.define "vmmngr" do |vmmngr|
+    vmmngr.vm.hostname = 'vm.loc'
+    vmmngr.vm.network "private_network", ip: "192.168.20.11"
+    vmmngr.vm.provision "shell", path: "scripts/install_vmmngr.sh"
+  end
 
   # # billmanager
   # config.vm.define "billmngr" do |billmngr|
