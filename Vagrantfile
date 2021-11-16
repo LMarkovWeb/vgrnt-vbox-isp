@@ -2,10 +2,9 @@
 # vi: set ft=ruby :
 
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+ENV['VAGRANT_EXPERIMENTAL'] = 'disks'
 
 Vagrant.configure("2") do |config|
-
-  config.vm.box = "generic/centos8"
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
@@ -20,6 +19,7 @@ Vagrant.configure("2") do |config|
   
   # ispmanager
   config.vm.define "ispmngr" do |ispmngr|
+    ispmngr.vm.box = 'generic/centos8'
     ispmngr.vm.hostname = 'isp.loc'
     ispmngr.vm.network "private_network", ip: "192.168.20.10"
     ispmngr.vm.provision "shell", path: "scripts/install_ispmngr.sh"
@@ -28,9 +28,11 @@ Vagrant.configure("2") do |config|
 
   # vmmanager
   config.vm.define "vmmngr" do |vmmngr|
+    vmmngr.vm.box = "generic/centos8"
     vmmngr.vm.hostname = 'vm.loc'
     vmmngr.vm.network "private_network", ip: "192.168.20.11"
     vmmngr.vm.provision "shell", path: "scripts/install_vmmngr.sh"
+    vmmngr.vm.disk :disk, name: "main", primary: 'yes', size: "60GB"
   end
 
   # # billmanager
