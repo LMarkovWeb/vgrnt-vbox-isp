@@ -13,13 +13,13 @@ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication
 
 sudo systemctl restart sshd.service
 
-
-echo 'Uptade packages'
-#sudo dnf makecache -y
-#sudo dnf update -y
-
-echo 'Download VM Manager'
+echo 'Download VM Manager ver.6 in /tmp/'
 curl -O http://download.ispsystem.com/6/installer/vm/vm
 chmod +x vm
 
-#sudo reboot
+sestatus
+echo 'Disable Selinux'
+echo "SELINUX=disabled" > /etc/selinux/config;
+
+echo 'Reboot VM'
+reboot

@@ -17,6 +17,8 @@ echo 'Uptade packages'
 sudo dnf makecache -y
 sudo dnf update -y
 
+dnf install wget mc -y
+
 echo 'Install ISP Manager'
 wget -P /tmp/ispmanager http://download.ispsystem.com/install.sh
 
@@ -30,5 +32,7 @@ EOF
 # Reboot is requred to complete the configuration of SELinux
 # Which version would you like to install ?
 # What version do you want to install
+
+rm -rf /usr/local/mgr5/etc/ispmgr.lic
 
 sudo reboot
