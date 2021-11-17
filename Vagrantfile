@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
     vb.gui = false
     vb.memory = "4096"
     vb.cpus = 2
+    vb.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
   end
 
   config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
